@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simulador de Soluções Sustentáveis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        h1,
+        h2 {
+            color: #2c7a7b;
+        }
+        
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        select,
+        input[type="checkbox"],
+        input[type="radio"],
+        input[type="submit"] {
+            margin-top: 5px;
+            font-size: 1em;
+        }
+        
+        .multiselect {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        
+        .multiselect label {
+            font-weight: normal;
+        }
+        
+        .btn-submit {
+            background-color: #2c7a7b;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 25px;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+        
+        .btn-submit:hover {
+            background-color: #285e5f;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simulador de Escolha de Soluções Sustentáveis</h1>
+    <form id="formSustentavel">
+        <!-- 1. Tipo de desastre -->
+        <h2>1. Tipo de Desastre</h2>
+        <label for="desastre">Selecione o tipo de desastre que afetou a região:</label>
+        <select id="desastre" name="desastre" required>
+      <option value="">-- Escolha --</option>
+      <option value="Terremoto">Terremoto</option>
+      <option value="Enchente/Inundação">Enchente/Inundação</option>
+      <option value="Ciclone/Tempestade">Ciclone/Tempestade</option>
+      <option value="Seca">Seca</option>
+      <option value="Outro">Outro</option>
+    </select>
+
+        <!-- 2. Características ambientais -->
+        <h2>2. Características Ambientais</h2>
+        <label for="bioma">Bioma predominante:</label>
+        <select id="bioma" name="bioma" required>
+      <option value="">-- Escolha --</option>
+      <option value="Floresta Tropical">Floresta Tropical</option>
+      <option value="Cerrado">Cerrado</option>
+      <option value="Pantanal">Pantanal</option>
+      <option value="Pampas">Pampas</option>
+      <option value="Mata Atlântica">Mata Atlântica</option>
+      <option value="Caatinga">Caatinga</option>
+      <option value="Andes/Montanhas">Andes/Montanhas</option>
+      <option value="Outro">Outro</option>
+    </select>
+
+        <label for="clima">Clima predominante:</label>
+        <select id="clima" name="clima" required>
+      <option value="">-- Escolha --</option>
+      <option value="Tropical">Tropical</option>
+      <option value="Semiárido">Semiárido</option>
+      <option value="Temperado">Temperado</option>
+      <option value="Subtropical">Subtropical</option>
+      <option value="Frio/Alpino">Frio/Alpino</option>
+    </select>
+
+        <label for="solo">Tipo de solo:</label>
+        <select id="solo" name="solo" required>
+      <option value="">-- Escolha --</option>
+      <option value="Argiloso">Argiloso</option>
+      <option value="Arenoso">Arenoso</option>
+      <option value="Laterítico">Laterítico</option>
+      <option value="Orgânico">Orgânico</option>
+      <option value="Rochoso">Rochoso</option>
+    </select>
+
+        <label>Recursos locais disponíveis:</label>
+        <div class="multiselect">
+            <label><input type="checkbox" name="recursos" value="Madeira"> Madeira</label>
+            <label><input type="checkbox" name="recursos" value="Terra (barro, adobe)"> Terra (barro, adobe)</label>
+            <label><input type="checkbox" name="recursos" value="Pedras"> Pedras</label>
+            <label><input type="checkbox" name="recursos" value="Material reciclado"> Material reciclado</label>
+            <label><input type="checkbox" name="recursos" value="Biomassa"> Biomassa</label>
+            <label><input type="checkbox" name="recursos" value="Outro"> Outro</label>
+        </div>
+
+        <!-- 3. Perfil da comunidade -->
+        <h2>3. Perfil da Comunidade</h2>
+        <label for="populacao">População aproximada:</label>
+        <select id="populacao" name="populacao" required>
+      <option value="">-- Escolha --</option>
+      <option value="Menos de 1.000 habitantes">Menos de 1.000 habitantes</option>
+      <option value="1.000 a 10.000">1.000 a 10.000</option>
+      <option value="10.000 a 50.000">10.000 a 50.000</option>
+      <option value="Mais de 50.000">Mais de 50.000</option>
+    </select>
+
+        <label for="tecnologia">Nível de acesso a tecnologia:</label>
+        <select id="tecnologia" name="tecnologia" required>
+      <option value="">-- Escolha --</option>
+      <option value="Baixo">Baixo</option>
+      <option value="Médio">Médio</option>
+      <option value="Alto">Alto</option>
+    </select>
+
+        <label for="capacitacao">Capacitação técnica local:</label>
+        <select id="capacitacao" name="capacitacao" required>
+      <option value="">-- Escolha --</option>
+      <option value="Baixa">Baixa</option>
+      <option value="Média">Média</option>
+      <option value="Alta">Alta</option>
+    </select>
+
+        <label for="cultura">Preferências culturais para reconstrução:</label>
+        <select id="cultura" name="cultura" required>
+      <option value="">-- Escolha --</option>
+      <option value="Preservar tradições locais">Preservar tradições locais</option>
+      <option value="Adotar novas tecnologias">Adotar novas tecnologias</option>
+      <option value="Mistura de ambos">Mistura de ambos</option>
+    </select>
+
+        <!-- 4. Prioridades sustentáveis -->
+        <h2>4. Prioridades Sustentáveis</h2>
+        <label>Escolha as prioridades para a reconstrução:</label>
+        <div class="multiselect">
+            <label><input type="checkbox" name="prioridades" value="Redução da emissão de carbono"> Redução da emissão de carbono</label>
+            <label><input type="checkbox" name="prioridades" value="Custo baixo"> Custo baixo</label>
+            <label><input type="checkbox" name="prioridades" value="Rapidez na reconstrução"> Rapidez na reconstrução</label>
+            <label><input type="checkbox" name="prioridades" value="Durabilidade e resistência"> Durabilidade e resistência</label>
+            <label><input type="checkbox" name="prioridades" value="Uso de materiais locais"> Uso de materiais locais</label>
+            <label><input type="checkbox" name="prioridades" value="Baixa manutenção"> Baixa manutenção</label>
+            <label><input type="checkbox" name="prioridades" value="Impacto ambiental mínimo"> Impacto ambiental mínimo</label>
+            <label><input type="checkbox" name="prioridades" value="Inclusão social e geração de emprego local"> Inclusão social e geração de emprego local</label>
+        </div>
+
+        <!-- 5. Categoria -->
+        <h2>5. Categoria de Solução</h2>
+        <label for="categoria">Selecione o foco da solução:</label>
+        <select id="categoria" name="categoria" required>
+      <option value="">-- Escolha --</option>
+      <option value="Habitação">Habitação</option>
+      <option value="Gestão da água">Gestão da água</option>
+      <option value="Energia">Energia</option>
+      <option value="Infraestrutura">Infraestrutura</option>
+      <option value="Saúde e saneamento">Saúde e saneamento</option>
+      <option value="Agricultura e segurança alimentar">Agricultura e segurança alimentar</option>
+    </select>
+
+        <input type="submit" class="btn-submit" value="Enviar e Gerar Recomendações" />
+    </form>
+
+    <h2>Resultado da Busca:</h2>
+    <pre id="resultado" style="white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 6px;"></pre>
+
+    <script src="formHandler.js"></script>
+</body>
+
+</html>
