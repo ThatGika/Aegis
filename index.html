@@ -36,7 +36,8 @@
         select,
         input[type="checkbox"],
         input[type="radio"],
-        input[type="submit"] {
+        input[type="submit"],
+        input[type="text"] {
             margin-top: 5px;
             font-size: 1em;
         }
@@ -52,7 +53,8 @@
             font-weight: normal;
         }
         
-        .btn-submit {
+        .btn-submit,
+        .btn-download {
             background-color: #2c7a7b;
             border: none;
             padding: 10px 20px;
@@ -63,8 +65,13 @@
             font-size: 1.1em;
         }
         
-        .btn-submit:hover {
+        .btn-submit:hover,
+        .btn-download:hover {
             background-color: #285e5f;
+        }
+        
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -72,7 +79,6 @@
 <body>
     <h1>Simulador de Escolha de Soluções Sustentáveis</h1>
     <form id="formSustentavel">
-        <!-- 1. Tipo de desastre -->
         <h2>1. Tipo de Desastre</h2>
         <label for="desastre">Selecione o tipo de desastre que afetou a região:</label>
         <select id="desastre" name="desastre" required>
@@ -84,7 +90,6 @@
       <option value="Outro">Outro</option>
     </select>
 
-        <!-- 2. Características ambientais -->
         <h2>2. Características Ambientais</h2>
         <label for="bioma">Bioma predominante:</label>
         <select id="bioma" name="bioma" required>
@@ -126,10 +131,10 @@
             <label><input type="checkbox" name="recursos" value="Pedras"> Pedras</label>
             <label><input type="checkbox" name="recursos" value="Material reciclado"> Material reciclado</label>
             <label><input type="checkbox" name="recursos" value="Biomassa"> Biomassa</label>
-            <label><input type="checkbox" name="recursos" value="Outro"> Outro</label>
+            <label><input type="checkbox" id="outroCheck" name="recursos" value="Outro"> Outro</label>
         </div>
+        <input type="text" id="outroTexto" placeholder="Descreva o recurso" class="hidden" />
 
-        <!-- 3. Perfil da comunidade -->
         <h2>3. Perfil da Comunidade</h2>
         <label for="populacao">População aproximada:</label>
         <select id="populacao" name="populacao" required>
@@ -164,7 +169,6 @@
       <option value="Mistura de ambos">Mistura de ambos</option>
     </select>
 
-        <!-- 4. Prioridades sustentáveis -->
         <h2>4. Prioridades Sustentáveis</h2>
         <label>Escolha as prioridades para a reconstrução:</label>
         <div class="multiselect">
@@ -178,7 +182,6 @@
             <label><input type="checkbox" name="prioridades" value="Inclusão social e geração de emprego local"> Inclusão social e geração de emprego local</label>
         </div>
 
-        <!-- 5. Categoria -->
         <h2>5. Categoria de Solução</h2>
         <label for="categoria">Selecione o foco da solução:</label>
         <select id="categoria" name="categoria" required>
@@ -196,6 +199,8 @@
 
     <h2>Resultado da Busca:</h2>
     <pre id="resultado" style="white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 6px;"></pre>
+
+    <button id="btnDownload" class="btn-download hidden">📥 Baixar Relatório</button>
 
     <script src="formHandler.js"></script>
 </body>
