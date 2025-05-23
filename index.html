@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Simulador de Soluções Sustentáveis</title>
+    <title>Aegis - Simulador de Soluções Sustentáveis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -77,121 +77,68 @@
 </head>
 
 <body>
-    <h1>Simulador de Escolha de Soluções Sustentáveis</h1>
+    <h1>Aegis - Simulador de Escolha de Soluções Sustentáveis</h1>
     <form id="formSustentavel">
         <h2>1. Tipo de Desastre</h2>
         <label for="desastre">Selecione o tipo de desastre que afetou a região:</label>
         <select id="desastre" name="desastre" required>
-      <option value="">-- Escolha --</option>
-      <option value="Terremoto">Terremoto</option>
-      <option value="Enchente/Inundação">Enchente/Inundação</option>
-      <option value="Ciclone/Tempestade">Ciclone/Tempestade</option>
-      <option value="Seca">Seca</option>
-      <option value="Outro">Outro</option>
-    </select>
+            <option value="">-- Escolha --</option>
+            <option value="Terremoto">Terremoto</option>
+            <option value="Enchente/Inundação">Enchente/Inundação</option>
+            <option value="Ciclone/Tempestade">Ciclone/Tempestade</option>
+            <option value="Seca">Seca</option>
+        </select>
 
-        <h2>2. Características Ambientais</h2>
-        <label for="bioma">Bioma predominante:</label>
-        <select id="bioma" name="bioma" required>
-      <option value="">-- Escolha --</option>
-      <option value="Floresta Tropical">Floresta Tropical</option>
-      <option value="Cerrado">Cerrado</option>
-      <option value="Pantanal">Pantanal</option>
-      <option value="Pampas">Pampas</option>
-      <option value="Mata Atlântica">Mata Atlântica</option>
-      <option value="Caatinga">Caatinga</option>
-      <option value="Andes/Montanhas">Andes/Montanhas</option>
-      <option value="Outro">Outro</option>
-    </select>
-
-        <label for="clima">Clima predominante:</label>
-        <select id="clima" name="clima" required>
-      <option value="">-- Escolha --</option>
-      <option value="Tropical">Tropical</option>
-      <option value="Semiárido">Semiárido</option>
-      <option value="Temperado">Temperado</option>
-      <option value="Subtropical">Subtropical</option>
-      <option value="Frio/Alpino">Frio/Alpino</option>
-    </select>
-
-        <label for="solo">Tipo de solo:</label>
-        <select id="solo" name="solo" required>
-      <option value="">-- Escolha --</option>
-      <option value="Argiloso">Argiloso</option>
-      <option value="Arenoso">Arenoso</option>
-      <option value="Laterítico">Laterítico</option>
-      <option value="Orgânico">Orgânico</option>
-      <option value="Rochoso">Rochoso</option>
-    </select>
-
-        <label>Recursos locais disponíveis:</label>
-        <div class="multiselect">
-            <label><input type="checkbox" name="recursos" value="Madeira"> Madeira</label>
-            <label><input type="checkbox" name="recursos" value="Terra (barro, adobe)"> Terra (barro, adobe)</label>
-            <label><input type="checkbox" name="recursos" value="Pedras"> Pedras</label>
-            <label><input type="checkbox" name="recursos" value="Material reciclado"> Material reciclado</label>
-            <label><input type="checkbox" name="recursos" value="Biomassa"> Biomassa</label>
-            <label><input type="checkbox" id="outroCheck" name="recursos" value="Outro"> Outro</label>
+        <h2>2. Patologia Associada</h2>
+        <label>Escolha as patologias associadas ao desastre:</label>
+        <div class="multiselect-Terremoto hidden" id="multiselect-Terremoto">
+            <label><input type="checkbox" name="patologias" value="Fissuras e trincas estruturais"> Fissuras e trincas estruturais</label>
+            <label><input type="checkbox" name="patologias" value="Danos nas fundações"> Danos nas fundações</label>
+            <label><input type="checkbox" name="patologias" value="Rachaduras nas conexões estruturais"> Rachaduras nas conexões estruturais</label>
+            <label><input type="checkbox" name="patologias" value="Durabilidade e resistência"> Durabilidade e resistência</label>
+            <label><input type="checkbox" name="patologias" value="Deslocamento de telhados"> Deslocamento de telhados</label>
+            <label><input type="checkbox" name="patologias" value="Descolamento de revestimentos"> Descolamento de revestimentos</label>
         </div>
-        <input type="text" id="outroTexto" placeholder="Descreva o recurso" class="hidden" />
-
-        <h2>3. Perfil da Comunidade</h2>
-        <label for="populacao">População aproximada:</label>
-        <select id="populacao" name="populacao" required>
-      <option value="">-- Escolha --</option>
-      <option value="Menos de 1.000 habitantes">Menos de 1.000 habitantes</option>
-      <option value="1.000 a 10.000">1.000 a 10.000</option>
-      <option value="10.000 a 50.000">10.000 a 50.000</option>
-      <option value="Mais de 50.000">Mais de 50.000</option>
-    </select>
-
-        <label for="tecnologia">Nível de acesso a tecnologia:</label>
-        <select id="tecnologia" name="tecnologia" required>
-      <option value="">-- Escolha --</option>
-      <option value="Baixo">Baixo</option>
-      <option value="Médio">Médio</option>
-      <option value="Alto">Alto</option>
-    </select>
-
-        <label for="capacitacao">Capacitação técnica local:</label>
-        <select id="capacitacao" name="capacitacao" required>
-      <option value="">-- Escolha --</option>
-      <option value="Baixa">Baixa</option>
-      <option value="Média">Média</option>
-      <option value="Alta">Alta</option>
-    </select>
-
-        <label for="cultura">Preferências culturais para reconstrução:</label>
-        <select id="cultura" name="cultura" required>
-      <option value="">-- Escolha --</option>
-      <option value="Preservar tradições locais">Preservar tradições locais</option>
-      <option value="Adotar novas tecnologias">Adotar novas tecnologias</option>
-      <option value="Mistura de ambos">Mistura de ambos</option>
-    </select>
-
-        <h2>4. Prioridades Sustentáveis</h2>
-        <label>Escolha as prioridades para a reconstrução:</label>
-        <div class="multiselect">
-            <label><input type="checkbox" name="prioridades" value="Redução da emissão de carbono"> Redução da emissão de carbono</label>
-            <label><input type="checkbox" name="prioridades" value="Custo baixo"> Custo baixo</label>
-            <label><input type="checkbox" name="prioridades" value="Rapidez na reconstrução"> Rapidez na reconstrução</label>
-            <label><input type="checkbox" name="prioridades" value="Durabilidade e resistência"> Durabilidade e resistência</label>
-            <label><input type="checkbox" name="prioridades" value="Uso de materiais locais"> Uso de materiais locais</label>
-            <label><input type="checkbox" name="prioridades" value="Baixa manutenção"> Baixa manutenção</label>
-            <label><input type="checkbox" name="prioridades" value="Impacto ambiental mínimo"> Impacto ambiental mínimo</label>
-            <label><input type="checkbox" name="prioridades" value="Inclusão social e geração de emprego local"> Inclusão social e geração de emprego local</label>
+        
+        <div class="multiselect-Enchente hidden" id="multiselect-Enchente">
+            <label><input type="checkbox" name="patologias" value="Recalque diferencial"> Recalque diferencial</label>
+            <label><input type="checkbox" name="patologias" value="Trincas e fissuras"> Trincas e fissuras</label>
+            <label><input type="checkbox" name="patologias" value="Infiltrações"> Infiltrações</label>
+            <label><input type="checkbox" name="patologias" value="Mofo"> Mofo</label>
+            <label><input type="checkbox" name="patologias" value="Descascamento de pintura e reboco"> Descascamento de pintura e reboco</label>
+            <label><input type="checkbox" name="patologias" value="Empenamento de portas e janelas"> Empenamento de portas e janelas</label>
+            <label><input type="checkbox" name="patologias" value="Descolamento de cerâmicas"> Descolamento de cerâmicas</label>
         </div>
 
-        <h2>5. Categoria de Solução</h2>
-        <label for="categoria">Selecione o foco da solução:</label>
-        <select id="categoria" name="categoria" required>
-      <option value="">-- Escolha --</option>
-      <option value="Habitação">Habitação</option>
-      <option value="Gestão da água">Gestão da água</option>
-      <option value="Energia">Energia</option>
-      <option value="Infraestrutura">Infraestrutura</option>
-      <option value="Saúde e saneamento">Saúde e saneamento</option>
-      <option value="Agricultura e segurança alimentar">Agricultura e segurança alimentar</option>
+        <div class="multiselect-Ciclone hidden" id="multiselect-Ciclone">
+            <label><input type="checkbox" name="patologias" value="Danos em telhados e coberturas"> Danos em telhados e coberturas</label>
+            <label><input type="checkbox" name="patologias" value="Danos às estruturas de vedação"> Danos às estruturas de vedação</label>
+            <label><input type="checkbox" name="patologias" value="Deslocamento de revestimentos e fachadas"> Deslocamento de revestimentos e fachadas</label>
+        </div>
+        
+        <div class="multiselect-Seca hidden" id="multiselect-Seca">            
+            // Seca
+            <label><input type="checkbox" name="patologias" value="Fissuras e trincas"> Fissuras e trincas</label>
+            <label><input type="checkbox" name="patologias" value="Descolamento de revestimentos"> Descolamento de revestimentos</label>
+            <label><input type="checkbox" name="patologias" value="Empenamento de portas e janelas"> Empenamento de portas e janelas</label>
+        </div>
+        
+
+        <h2>3. Prioridade Sustentável</h2>
+        <label for="prioridades">Selecione a prioridade sustentável:</label>
+        <select id="prioridades" name="prioridades" required>
+            <option value="">-- Escolha --</option>
+            <option value="Redução da emissão de carbono">Redução da emissão de carbono</option>
+            <option value="Custo baixo">Custo baixo</option>
+            <option value="Rapidez na reconstrução">Rapidez na reconstrução</option>
+            <option value="Durabilidade e resistência">Durabilidade e resistência</option>
+            <option value="Uso de materiais locais">Uso de materiais locais</option>
+            <option value="Baixa manutenção">Baixa manutenção</option>
+            <option value="Impacto ambiental mínimo">Impacto ambiental mínimo</option>
+            <option value="Inclusão social e geração de emprego local">Inclusão social e geração de emprego local</option>
+        </select>
+
+        
     </select>
 
         <input type="submit" class="btn-submit" value="Enviar e Gerar Recomendações" />
@@ -205,4 +152,9 @@
     <script src="formHandler.js"></script>
 </body>
 
+<div class="footer">
+  <p>© Este site é parte integrante do <strong>Trabalho de Conclusão de Curso (TCC)</strong> desenvolvido pelos alunos da <strong>Faculdade Anhembi Morumbi — Turma do 1º semestre de 2025</strong>.</p>
+
+  <p><em>Toda e qualquer intervenção estrutural deve ser previamente avaliada e acompanhada por um profissional legalmente habilitado. Intervenções inadequadas podem comprometer a integridade da edificação, resultando em riscos severos à segurança estrutural e à vida.</em></p> 
+</div>
 </html>
