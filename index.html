@@ -1,154 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aegis - Simulador de Soluções Sustentáveis</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 10px;
-            background: #f5f5f5;
-            color: #333;
-        }
-        
-        h1,
-        h2 {
-            color: #2c7a7b;
-        }
-        
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        
-        select,
-        input[type="checkbox"],
-        input[type="radio"],
-        input[type="submit"],
-        input[type="text"] {
-            margin-top: 5px;
-            font-size: 1em;
-        }
-        
-        .multiselect {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 5px;
-        }
-        
-        .multiselect label {
-            font-weight: normal;
-        }
-        
-        .btn-submit,
-        .btn-download {
-            background-color: #2c7a7b;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 25px;
-            color: white;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1.1em;
-        }
-        
-        .btn-submit:hover,
-        .btn-download:hover {
-            background-color: #285e5f;
-        }
-        
-        .hidden {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aegis - Simulador de Soluções Sustentáveis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 10px;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    h1, h2 {
+      color: #2c7a7b;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .checkbox-list {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkbox-list label {
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+
+    select, input[type="submit"] {
+      margin-top: 5px;
+      font-size: 1em;
+    }
+
+    .btn-submit, .btn-download {
+      background-color: #2c7a7b;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 25px;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1.1em;
+    }
+
+    .btn-submit:hover, .btn-download:hover {
+      background-color: #285e5f;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Aegis - Simulador de Escolha de Soluções Sustentáveis</h1>
-    <form id="formSustentavel">
-        <h2>1. Tipo de Desastre</h2>
-        <label for="desastre">Selecione o tipo de desastre que afetou a região:</label>
-        <select id="desastre" name="desastre" required>
-            <option value="">-- Escolha --</option>
-            <option value="Terremoto">Terremoto</option>
-            <option value="Enchente/Inundação">Enchente/Inundação</option>
-            <option value="Ciclone/Tempestade">Ciclone/Tempestade</option>
-            <option value="Seca">Seca</option>
-        </select>
 
-        <h2>2. Patologia Associada</h2>
-        <label>Escolha as patologias associadas ao desastre:</label>
-        <div class="multiselect-Terremoto hidden" id="multiselect-Terremoto">
-            <label><input type="checkbox" name="patologias" value="Fissuras e trincas estruturais"> Fissuras e trincas estruturais</label>
-            <label><input type="checkbox" name="patologias" value="Danos nas fundações"> Danos nas fundações</label>            
-            <label><input type="checkbox" name="patologias" value="Deslocamento de telhados"> Deslocamento de telhados</label>
-            <label><input type="checkbox" name="patologias" value="Descolamento de revestimentos"> Descolamento de revestimentos</label>
-        </div>
-        
-        <div class="multiselect-Enchente hidden" id="multiselect-Enchente">            
-            <label><input type="checkbox" name="patologias" value="Trincas e fissuras"> Trincas e fissuras</label>
-            <label><input type="checkbox" name="patologias" value="Infiltrações"> Infiltrações e Mofo</label>
-            <label><input type="checkbox" name="patologias" value="Descascamento de pintura e reboco"> Descascamento de pintura e reboco</label>
-            <label><input type="checkbox" name="patologias" value="Empenamento de portas e janelas"> Empenamento de portas e janelas</label>            
-        </div>
+  <h1>Aegis - Simulador de Escolha de Soluções Sustentáveis</h1>
+  <form id="formSustentavel">
+    <h2>1. Patologias Identificadas</h2>
+    <label>Selecione as patologias encontradas:</label>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="patologias" value="Desaprumo de edificações" /> Desaprumo de edificações</label>
+      <label><input type="checkbox" name="patologias" value="Fissuras, trincas e rachaduras" /> Fissuras, trincas e rachaduras</label>
+      <label><input type="checkbox" name="patologias" value="Infiltrações e mofos" /> Infiltrações e mofos</label>
+      <label><input type="checkbox" name="patologias" value="Descolamento de pintura e reboco" /> Descolamento de pintura e reboco</label>
+      <label><input type="checkbox" name="patologias" value="Descolamento de cerâmicas" /> Descolamento de cerâmicas</label>
+      <label><input type="checkbox" name="patologias" value="Infiltrações por telhas deslocadas ou quebradas" /> Infiltrações por telhas deslocadas ou quebradas</label>
 
-        <div class="multiselect-Ciclone hidden" id="multiselect-Ciclone">
-            <label><input type="checkbox" name="patologias" value="Danos em telhados e coberturas"> Danos em telhados e coberturas</label>
-            <label><input type="checkbox" name="patologias" value="Danos às estruturas de vedação"> Danos às estruturas de vedação</label>
-            <label><input type="checkbox" name="patologias" value="Deslocamento de revestimentos e fachadas"> Deslocamento de revestimentos e fachadas</label>
-        </div>
-        
-        <div class="multiselect-Seca hidden" id="multiselect-Seca">
-            <label><input type="checkbox" name="patologias" value="Fissuras e trincas"> Fissuras e trincas</label>
-            <label><input type="checkbox" name="patologias" value="Descolamento de revestimentos"> Descolamento de revestimentos</label>
-            <label><input type="checkbox" name="patologias" value="Empenamento de portas e janelas"> Empenamento de portas e janelas</label>
-        </div>
-        
+    </div>
 
-        <h2>3. Prioridade Sustentável</h2>
-        <label for="prioridades">Selecione a prioridade sustentável:</label>
-        <select id="prioridades" name="prioridades" required>
-            <option value="">-- Escolha --</option>
-            <option value="Redução da emissão de carbono">Redução da emissão de carbono</option>
-            <option value="Custo baixo">Custo baixo</option>
-            <option value="Rapidez na reconstrução">Rapidez na reconstrução</option>
-            <option value="Durabilidade e resistência">Durabilidade e resistência</option>
-            <option value="Uso de materiais locais">Uso de materiais locais</option>
-            <option value="Baixa manutenção">Baixa manutenção</option>
-            <option value="Impacto ambiental mínimo">Impacto ambiental mínimo</option>
-            <option value="Inclusão social e geração de emprego local">Inclusão social e geração de emprego local</option>
-        </select>
-
-        
+    <h2>2. Prioridade Sustentável</h2>
+    <label for="prioridades">Selecione a prioridade sustentável:</label>
+    <select id="prioridades" name="prioridades" required>
+      <option value="">-- Escolha --</option>
+      <option value="Redução da emissão de carbono">Redução da emissão de carbono</option>
+      <option value="Custo baixo">Custo baixo</option>
+      <option value="Rapidez na reconstrução">Rapidez na reconstrução</option>
+      <option value="Durabilidade e resistência">Durabilidade e resistência</option>
+      <option value="Uso de materiais locais">Uso de materiais locais</option>
+      <option value="Baixa manutenção">Baixa manutenção</option>
+      <option value="Impacto ambiental mínimo">Impacto ambiental mínimo</option>
+      <option value="Inclusão social e geração de emprego local">Inclusão social e geração de emprego local</option>
     </select>
 
-        <input type="submit" class="btn-submit" value="Enviar e Gerar Recomendações" />
-    </form>
+    <input type="submit" class="btn-submit" value="Enviar e Gerar Recomendações" />
+  </form>
 
-    <h2>Resultado da Busca:</h2>
-    <pre id="resultado" style="white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 6px;"></pre>
+  <h2>Resultado da Busca:</h2>
+  <pre id="resultado"></pre>
 
-    <button id="btnDownload" class="btn-download hidden">📥 Baixar Relatório</button>
+  <button id="btnDownload" class="btn-download hidden">📥 Baixar Relatório</button>
 
-    <script src="formHandler.js"></script>
+  <div class="footer">
+    <p>© Este site é parte integrante do <strong>Trabalho de Conclusão de Curso (TCC)</strong> desenvolvido pelos alunos de Engenharia Civil da <strong>Faculdade Anhembi Morumbi — Turma do 1º semestre de 2025</strong>.</p>
+    <p><em>Toda e qualquer intervenção estrutural deve ser previamente avaliada e acompanhada por um profissional legalmente habilitado. Intervenções inadequadas podem comprometer a integridade da edificação, resultando em riscos severos à segurança estrutural e à vida.</em></p>
+  </div>
+<script src="formHandler.js"></script>
 </body>
-
-<div class="footer">
-  <p>© Este site é parte integrante do <strong>Trabalho de Conclusão de Curso (TCC)</strong> desenvolvido pelos alunos de Engenharia Civil da <strong>Faculdade Anhembi Morumbi — Turma do 1º semestre de 2025</strong>.</p>
-
-  <p><em>Toda e qualquer intervenção estrutural deve ser previamente avaliada e acompanhada por um profissional legalmente habilitado. Intervenções inadequadas podem comprometer a integridade da edificação, resultando em riscos severos à segurança estrutural e à vida.</em></p> 
-</div>
 </html>
