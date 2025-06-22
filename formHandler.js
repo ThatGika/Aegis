@@ -34,7 +34,7 @@
 
       const respostaBaseadaArtigo = 'Baseado no artigo: Patologias em Edificações: soluções sustentáveis para o tratamento:\n\n' + baseDeConhecimentoPatologia(patologiasSelecionadas);
 
-      const resposta = respostaBaseadaArtigo + '\n\n--------------\n\nRelatório com recomendações de soluções sustentáveis com aplicação de inteligência artificial:\n\n' + respostaTexto;
+      const resposta = respostaBaseadaArtigo + '--------------\n\nRelatório com recomendações de soluções sustentáveis com aplicação de inteligência artificial:\n\n' + respostaTexto;
 
       resultadoBox.textContent = resposta;
       btnDownload.classList.remove("hidden");
